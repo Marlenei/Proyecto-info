@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+th{
+    background-color: rgb(25, 2, 78);
+
+}
+
+td {
+    background-color: rgb(18, 150, 36);
+
+}
+
+body{
+    background-color: rgb(19, 37, 95);
+    font-family: "Anton", sans-serif;
+}
