@@ -9,16 +9,15 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand">BLOG</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="#">Pricing</a>
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                <a class="nav-link" href="#">Mis posteos</a>
+                <a class="nav-link" href="#">Cerrar sesion</a>
               </div>
             </div>
           </div>
@@ -29,19 +28,19 @@
     
 <div class="container">
     <title> {{title}}</title>
-    {% for post_element in post_list %}
-    <div class="card-group">
-        <div class="card">
-          <img src="{{ post_element.imagen.url }}" >
-          <div class="card-body">
-            <h5 class="card-title">{{ post_element.titulo}}</h5>
-            <p class="card-text">{{ post_element.texto}}</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for post_element in post_list %}
+      <div class="col">
+            <div class="card h-100 ">
+              <img class="imagenpost"  src="{{ post_element.imagen.url }}" >
+                <div class="card-body">
+                  <h5 class="card-title">{{ post_element.titulo}}</h5>
+                  <p class="card-text">{{ post_element.texto}}</p>
+                  <p class="card-footer"><small class="text-muted">{{ post_element.publicado}}</small></p>
+                </div>
+            </div>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock contenido%}
-
-
