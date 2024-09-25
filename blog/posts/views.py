@@ -16,7 +16,7 @@ def post_list(request):
     post_list=Post.objects.all()
     return HttpResponse(post_list)
 
-def post_template(request):
+def post_templates(request):
     post_list = Post.objects.all()
     template = loader.get_template("post_templates.html")
     context = {"post_list": post_list,}
