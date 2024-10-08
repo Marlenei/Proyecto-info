@@ -35,6 +35,15 @@ def delete_comentario(request, com_id):
     
     return redirect('post_templates')
 
+
+@login_required
+def delete_posts(request, post_element_id):
+    post = get_object_or_404(Post, pk=post_element_id)
+    if post.autor == request.user:
+        post.delete()   
+    
+    return redirect('post_templates')
+
 def post_list(request):
     post_list=Post.objects.all()
     return HttpResponse(post_list)
@@ -42,6 +51,14 @@ def post_list(request):
 def post_templates(request):
     post_list = Post.objects.all()
     template = loader.get_template("post_templates.html")
+    context = {"post_list": post_list,}
+    return HttpResponse(template.render(context, request))
+
+@login_required
+def misposteos(request):
+    usu = request.user
+    post_list = Post.objects.filter(autor = usu)
+    template = loader.get_template("misposteos.html")
     context = {"post_list": post_list,}
     return HttpResponse(template.render(context, request))
 
